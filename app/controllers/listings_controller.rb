@@ -1,14 +1,21 @@
 class ListingController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  
+  def index
+    #show all listings
+    @listings = Listing.all
+  end
+
+  def show 
+    #view a single listing
+  end 
+
   def create
     # create new listing
   end
 
   def update
     #updates the current listing
-  end
-
-  def index
-    #show all listings
   end
 
   def edit
@@ -23,7 +30,13 @@ class ListingController < ApplicationController
     #shows forms for creating a new listing
   end
 
-  def show 
-    #view a single listing
-  end  
+
+  private
+
+  def set_listing
+    id = params[:id]
+    @listing = Listing.find(id)
+  end
+
+ 
 end
