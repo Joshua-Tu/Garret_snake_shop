@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
 
   def create
     # create new listing
+    byebug
   end
 
   def update
@@ -29,6 +30,8 @@ class ListingsController < ApplicationController
   def new
     #shows forms for creating a new listing
     @listing = Listing.new
+    @breeds = Breed.all
+    @sexes = Listing.sexes.keys
   end
 
 
