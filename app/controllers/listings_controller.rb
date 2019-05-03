@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_breeds_and_sexes, only: [:new, :edit]
   def index
     #show all listings
     @listings = Listing.all
@@ -13,7 +13,13 @@ class ListingsController < ApplicationController
   def create
     # create new listing
     @listing = Listing.create(params[listing_params])
-    byebug
+    # byebug
+    if @listing.errors.any?
+      set_breeds_and_sexes
+      render "new"
+    else
+      redirect_to listings_path
+    end
   end
 
   def listing_params
@@ -35,12 +41,15 @@ class ListingsController < ApplicationController
   def new
     #shows forms for creating a new listing
     @listing = Listing.new
-    @breeds = Breed.all
-    @sexes = Listing.sexes.keys
   end
 
 
   private
+
+  def set_breeds_and_sexes
+    @breeds = Breed.all
+    @sexes = Listing.sexes.keys
+  end
 
   def set_listing
     id = params[:id]
