@@ -12,7 +12,12 @@ class ListingsController < ApplicationController
 
   def create
     # create new listing
-    # byebug
+    @listing = Listing.create(params[listing_params])
+    byebug
+  end
+
+  def listing_params
+    params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet )
   end
 
   def update

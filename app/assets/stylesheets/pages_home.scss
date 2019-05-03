@@ -1,5 +1,12 @@
+// .hero {
+//   width: 200px;
+//   height: 200px;
+//   background-image: url(image-path("hero_snake.jpg"));
+// }
+
 .hero {
   width: 200px;
   height: 200px;
-  background-image: url(image-path("hero_snake.jpg"));
+  background-image: url(image-path("hero.jpg"));
+  background-size: cover;
 }
