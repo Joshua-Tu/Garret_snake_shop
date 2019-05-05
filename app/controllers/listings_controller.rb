@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
 
   def create
     # create new listing
-    @listing = Listing.create(params[listing_params])
+    @listing = Listing.create(listing_params)
     # byebug
     if @listing.errors.any?
       set_breeds_and_sexes
@@ -20,6 +20,7 @@ class ListingsController < ApplicationController
     else
       redirect_to listings_path
     end
+    
   end
 
   def listing_params
